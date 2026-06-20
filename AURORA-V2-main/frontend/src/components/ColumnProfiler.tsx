@@ -33,7 +33,7 @@ interface ProfileData {
     };
 }
 
-export default function ColumnProfiler({ columnData, columnName, action }: ColumnProfilerProps) {
+export default function ColumnProfiler({ columnData, columnName }: ColumnProfilerProps) {
     const [profile, setProfile] = useState<ProfileData | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
