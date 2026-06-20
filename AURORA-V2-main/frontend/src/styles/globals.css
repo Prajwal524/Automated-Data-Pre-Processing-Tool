@@ -1,0 +1,134 @@
+@import './design-system.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* New color palette */
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-warm-gray: #E0E0E0;
+  --color-cool-gray: #9E9E9E;
+  --color-soft-blue: #90CAF9;
+  
+  /* Semantic mappings */
+  --background: var(--color-white);
+  --foreground: var(--color-black);
+  --primary: var(--color-soft-blue);
+  --muted: var(--color-warm-gray);
+  --muted-foreground: var(--color-cool-gray);
+  --border: var(--color-warm-gray);
+}
+
+/* Dark mode (optional) */
+.dark {
+  --background: var(--color-black);
+  --foreground: var(--color-white);
+  --muted: #1a1a1a;
+  --muted-foreground: var(--color-cool-gray);
+  --border: #333333;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-brand-white border border-brand-warm-gray rounded-2xl shadow-lg;
+    transition: all 0.3s ease;
+  }
+
+  .glass-card:hover {
+    @apply shadow-xl border-primary;
+    transform: translateY(-2px);
+  }
+
+  .gradient-text {
+    @apply text-primary;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-primary text-brand-black rounded-xl font-medium shadow-lg hover:shadow-xl hover:bg-primary-hover transform hover:-translate-y-0.5 transition-all duration-200;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-brand-white text-brand-black rounded-xl font-medium border border-brand-warm-gray hover:border-primary shadow-sm hover:shadow-md transition-all duration-200;
+  }
+
+  .metric-card {
+    @apply glass-card p-6 hover:shadow-2xl transition-all duration-300;
+  }
+
+  .chat-bubble {
+    @apply rounded-2xl p-4 max-w-[80%];
+    animation: slideIn 0.3s ease-out;
+  }
+
+  .chat-bubble-user {
+    @apply chat-bubble bg-primary text-brand-black ml-auto;
+  }
+
+  .chat-bubble-assistant {
+    @apply chat-bubble bg-background-dark text-brand-white border border-border-dark;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background-muted rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-hover;
+}
+
+/* Loading animation */
+.loading-dots span {
+  animation: loading 1.4s infinite;
+}
+
+.loading-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loading-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes loading {
+
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+  }
+
+  30% {
+    transform: translateY(-10px);
+  }
+}
