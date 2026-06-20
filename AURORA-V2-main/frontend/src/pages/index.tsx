@@ -16,6 +16,7 @@ export default function Home() {
     <>
       <Head>
         <title>AURORA - Intelligent Data Preprocessing</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="AI-powered data preprocessing with privacy-preserving learning" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
